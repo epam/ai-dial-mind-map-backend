@@ -12,3 +12,14 @@ excludes:
     - pattern: "test"
       reason: "TEST_DEPENDENCY_OF"
       comment: "Packages for testing only."
+license_choices:
+  package_license_choices:
+    - package_id: "PyPI::pymupdf"
+      license_choices:
+        - given: "AGPL-3.0-only OR LicenseRef-ort-Artifex-Commercial-License"
+          choice: "AGPL-3.0-only"
+resolutions:
+  rule_violations:
+    - message: "COPYLEFT_IN_DEPENDENCY.*PyPI::pymupdf.*AGPL-3\\.0-only.*"
+      reason: "LICENSE_ACQUIRED_EXCEPTION"
+      comment: "PyMuPDF is used under the AGPL-3.0-only license. Copyleft obligations are acknowledged and accepted for this dependency."

@@ -50,6 +50,12 @@ openvino = "2025.2.0"
 pdfplumber = "0.11.9"
 theine = "^0.4.4"
 xgboost = "^3.0.2"
+# HACK: Pin transitive nvidia-nccl-cu12 to a single Linux/x86_64 version. Otherwise the
+# lockfile ends up with two versions split by platform markers (torch darwin build
+# pins 2.26.2, while xgboost's unconstrained dep resolves to 2.30.4 on cpu Linux),
+# which ORT's python-inspector cannot re-resolve from its flattened requirements
+# export (fails the analyzer). macOS never installs any nvidia package anyway.
+nvidia-nccl-cu12 = { version = "2.26.2", markers = "platform_system == 'Linux' and platform_machine == 'x86_64'" }
 humanfriendly = "^10.0"
 dataclasses-json = "^0.6.7"
 urllib3 = "^2.0"

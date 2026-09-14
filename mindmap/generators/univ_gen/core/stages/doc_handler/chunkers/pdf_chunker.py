@@ -4,6 +4,7 @@ from mindmap.generators.univ_gen.chainer.model_handler import LLMUtils
 from mindmap.generators.univ_gen.common.constants import DataFrameCols as Col
 from mindmap.generators.univ_gen.core.utils.pdf_handler import (
     get_text_pages,
+    open_pdf_document,
     page_to_base64,
 )
 
@@ -35,18 +36,21 @@ class PDFChunker(BaseDocChunker):
 
         doc_pages = await get_text_pages(doc_with_content.content)
         pages: list[PageContent] = []
-        for page_num, page_text in enumerate(doc_pages, 1):
-            image_data = page_to_base64(doc_with_content.content, page_num)
-            text_tokens = len(ENCODER.encode(page_text.page_content))
-            img_tokens = calculate_image_tokens(image_data) if image_data else 0
-            pages.append(
-                PageContent(
-                    page_num,
-                    [page_text.page_content],
-                    [image_data] if image_data else [],
-                    text_tokens + img_tokens,
+        with open_pdf_document(doc_with_content.content) as pdf_document:
+            for page_num, page_text in enumerate(doc_pages, 1):
+                image_data = page_to_base64(pdf_document, page_num)
+                text_tokens = len(ENCODER.encode(page_text.page_content))
+                img_tokens = (
+                    calculate_image_tokens(image_data) if image_data else 0
                 )
-            )
+                pages.append(
+                    PageContent(
+                        page_num,
+                        [page_text.page_content],
+                        [image_data] if image_data else [],
+                        text_tokens + img_tokens,
+                    )
+                )
 
         merged_page_groups = aggregate_page_content(
             pages, ENCODER, MAX_CHUNK_SIZE, MAX_CHUNK_IMG_NUM
@@ -128,18 +132,21 @@ class WholePDFChunker(BaseDocChunker):
         # 1. Extract all pages and their content
         doc_pages = await get_text_pages(doc_with_content.content)
         pages: list[PageContent] = []
-        for page_num, page_text in enumerate(doc_pages, 1):
-            image_data = page_to_base64(doc_with_content.content, page_num)
-            text_tokens = len(ENCODER.encode(page_text.page_content))
-            img_tokens = calculate_image_tokens(image_data) if image_data else 0
-            pages.append(
-                PageContent(
-                    page_num,
-                    [page_text.page_content],
-                    [image_data] if image_data else [],
-                    text_tokens + img_tokens,
+        with open_pdf_document(doc_with_content.content) as pdf_document:
+            for page_num, page_text in enumerate(doc_pages, 1):
+                image_data = page_to_base64(pdf_document, page_num)
+                text_tokens = len(ENCODER.encode(page_text.page_content))
+                img_tokens = (
+                    calculate_image_tokens(image_data) if image_data else 0
                 )
-            )
+                pages.append(
+                    PageContent(
+                        page_num,
+                        [page_text.page_content],
+                        [image_data] if image_data else [],
+                        text_tokens + img_tokens,
+                    )
+                )
 
         # 2. Treat all pages as a single group
         merged_page_groups = [pages] if pages else []

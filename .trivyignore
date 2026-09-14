@@ -28,3 +28,11 @@ CVE-2026-49477 exp:2026-11-01
 CVE-2026-4372 exp:2026-11-01
 CVE-2026-5241 exp:2026-11-01
 GHSA-6v7p-g79w-8964 exp:2026-11-01
+
+# Blocked by upstream constraints; accept the risk until 2026-11-01
+# transformers: fixed in 5.10.0, but sentence-transformers 3.3.1 requires
+# transformers <5.0.0 and optimum[openvino] requires <4.54.0
+CVE-2026-9856 exp:2026-11-01
+# unstructured: fixed in 0.24.0, which requires Python >=3.11 while this
+# project supports >=3.10
+CVE-2026-71428 exp:2026-11-01

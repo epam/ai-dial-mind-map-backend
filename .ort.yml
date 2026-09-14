@@ -1,0 +1,23 @@
+---
+analyzer:
+  skip_excluded: true
+excludes:
+  scopes:
+    - pattern: "dev"
+      reason: "DEV_DEPENDENCY_OF"
+      comment: "Packages for development only."
+    - pattern: "lint"
+      reason: "DEV_DEPENDENCY_OF"
+      comment: "Packages for static code analysis only."
+    - pattern: "test"
+      reason: "TEST_DEPENDENCY_OF"
+      comment: "Packages for testing only."
+license_choices:
+  repository_license_choices:
+    - given: "AGPL-3.0-only OR LicenseRef-ort-Artifex-Commercial-License"
+      choice: "AGPL-3.0-only"
+resolutions:
+  rule_violations:
+    - message: ".*'PyPI::pymupdf:.*' is licensed under the ScanCode 'copyleft' categorized license AGPL-3\\.0-only\\..*"
+      reason: "LICENSE_ACQUIRED_EXCEPTION"
+      comment: "Copyleft obligations are acknowledged and accepted for this package."

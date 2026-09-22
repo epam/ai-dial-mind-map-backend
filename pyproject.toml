@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mindmap"
-version = "0.15.0rc1"
+version = "0.15.0"
 description = "The project is a backend part of the DIAL Mind Map Studio"
 authors = ["Uladzislau Vishneuski <Uladzislau_Vishneuski@epam.com>", "Viachaslau Shpak <Viachaslau_Shpak@epam.com>"]
 homepage = "https://dialx.ai/"

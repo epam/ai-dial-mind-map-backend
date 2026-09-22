@@ -28,6 +28,7 @@ CVE-2026-49477 exp:2026-11-01
 CVE-2026-4372 exp:2026-11-01
 CVE-2026-5241 exp:2026-11-01
 GHSA-6v7p-g79w-8964 exp:2026-11-01
+CVE-2026-63374 exp:2026-11-01
 
 # Blocked by upstream constraints; accept the risk until 2026-11-01
 # transformers: fixed in 5.10.0, but sentence-transformers 3.3.1 requires

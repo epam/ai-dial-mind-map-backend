@@ -15,7 +15,7 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y \
         ca-certificates \
         # Libreoffice is required for MS office documents
-        libreoffice=4:24.2.7-0ubuntu0.24.04.6 \
+        libreoffice=4:24.2.7-0ubuntu0.24.04.7 \
         libmagic1 \
         poppler-utils \
         # Dependency for opencv library
@@ -46,6 +46,13 @@ COPY pyproject.toml poetry.lock ./
 ENV POETRY=poetry@1.8.5
 # uvx installs poetry in separate venv, not spoiling the app venv
 RUN uvx "$POETRY" install --no-interaction --no-ansi --no-cache --only main --no-root --no-directory
+
+# pip of the base interpreter is not used at runtime, but its vendored
+# dependencies (e.g. urllib3) are flagged by Trivy, so remove it
+RUN rm -rf \
+        "$UV_PYTHON_INSTALL_DIR"/cpython-*/lib/python3.11/site-packages/pip \
+        "$UV_PYTHON_INSTALL_DIR"/cpython-*/lib/python3.11/site-packages/pip-*.dist-info \
+        "$UV_PYTHON_INSTALL_DIR"/cpython-*/bin/pip*
 
 
 FROM builder AS builder_download_nltk

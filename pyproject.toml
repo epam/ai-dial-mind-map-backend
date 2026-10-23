@@ -27,7 +27,7 @@ torchvision = [
     { markers = "sys_platform == 'darwin'", version = "0.22.0", source = "PyPI" },
     { markers = "sys_platform != 'darwin'", version = "0.22.0+cpu", source = "pytorch" },
 ]
-pyjwt = "^2.0"
+pyjwt = "^2.14.0"
 langchain = "^0.3.13"
 langchain-core = "^0.3.28"
 numpy = "^1.22.4"
@@ -52,7 +52,8 @@ theine = "^0.4.4"
 xgboost = "^3.0.2"
 humanfriendly = "^10.0"
 dataclasses-json = "^0.6.7"
-urllib3 = "^2.0"
+urllib3 = "^2.8.0"
+fsspec = ">=2026.6.0"
 pydantic = "^2.0"
 requests = "^2.0"
 tqdm = "^4.0"

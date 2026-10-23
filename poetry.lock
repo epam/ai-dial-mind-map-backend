@@ -7094,32 +7094,37 @@ test = ["Cython", "array-api-strict (>=2.3.1)", "asv", "gmpy2", "hypothesis (>=6
 
 [[package]]
 name = "sentence-transformers"
-version = "3.3.1"
-description = "State-of-the-Art Text Embeddings"
+version = "5.7.0"
+description = "Embeddings, Retrieval, and Reranking"
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "sentence_transformers-3.3.1-py3-none-any.whl", hash = "sha256:abffcc79dab37b7d18d21a26d5914223dd42239cfe18cb5e111c66c54b658ae7"},
-    {file = "sentence_transformers-3.3.1.tar.gz", hash = "sha256:9635dbfb11c6b01d036b9cfcee29f7716ab64cf2407ad9f403a2e607da2ac48b"},
+    {file = "sentence_transformers-5.7.0-py3-none-any.whl", hash = "sha256:b78141da3d8137e70d965866e2ca43190b9266f3d4d8752e250ded75e7136730"},
+    {file = "sentence_transformers-5.7.0.tar.gz", hash = "sha256:fd8c8fc35e6323631dff9f3760969ebf7980dc3cfda0ab1354bc6a774cc0e5d8"},
 ]
 
 [package.dependencies]
-huggingface-hub = ">=0.20.0"
-optimum-intel = {version = ">=1.20.0", extras = ["openvino"], optional = true, markers = "extra == \"openvino\""}
-Pillow = "*"
-scikit-learn = "*"
-scipy = "*"
+huggingface-hub = ">=0.23.0"
+numpy = ">=1.20.0"
+optimum-intel = {version = "*", extras = ["openvino"], optional = true, markers = "extra == \"openvino\""}
+scikit-learn = ">=0.22.0"
+scipy = ">=1.0.0"
+tokenizers = ">=0.19"
 torch = ">=1.11.0"
-tqdm = "*"
-transformers = ">=4.41.0,<5.0.0"
+tqdm = ">=4.0.0"
+transformers = ">=4.41.0,<6.0.0"
+typing_extensions = ">=4.5.0"
 
 [package.extras]
-dev = ["accelerate (>=0.20.3)", "datasets", "peft", "pre-commit", "pytest", "pytest-cov"]
-onnx = ["optimum[onnxruntime] (>=1.23.1)"]
-onnx-gpu = ["optimum[onnxruntime-gpu] (>=1.23.1)"]
-openvino = ["optimum-intel[openvino] (>=1.20.0)"]
-train = ["accelerate (>=0.20.3)", "datasets"]
+audio = ["transformers[audio]"]
+dev = ["accelerate (>=0.20.3)", "datasets (>=2.0.0)", "peft", "pre-commit", "pytest", "pytest-cov", "pytest-env", "pytest-subtests", "pytest-xdist", "transformers[audio,video,vision]"]
+image = ["transformers[vision]"]
+onnx = ["optimum-onnx[onnxruntime]"]
+onnx-gpu = ["optimum-onnx[onnxruntime-gpu]"]
+openvino = ["optimum-intel[openvino]"]
+train = ["accelerate (>=0.20.3)", "datasets (>=2.0.0)"]
+video = ["transformers[video]"]
 
 [[package]]
 name = "setuptools"
@@ -9139,4 +9144,4 @@ cffi = ["cffi (>=1.17,<2.0) ; platform_python_implementation != \"PyPy\" and pyt
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.12"
-content-hash = "d5fcb270d2a46f7433252b6e45eba01fa3fa41d37d38118988521df3cbe53252"
+content-hash = "2f6b1a6fe8aba3c141d10823ae253ecfc47c73bf0d834fd1610941d54f241848"

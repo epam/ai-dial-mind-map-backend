@@ -15,7 +15,7 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y \
         ca-certificates \
         # Libreoffice is required for MS office documents
-        libreoffice=4:24.2.7-0ubuntu0.24.04.6 \
+        libreoffice=4:24.2.7-0ubuntu0.24.04.7 \
         libmagic1 \
         poppler-utils \
         # Dependency for opencv library

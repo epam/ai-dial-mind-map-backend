@@ -47,6 +47,13 @@ ENV POETRY=poetry@1.8.5
 # uvx installs poetry in separate venv, not spoiling the app venv
 RUN uvx "$POETRY" install --no-interaction --no-ansi --no-cache --only main --no-root --no-directory
 
+# pip of the base interpreter is not used at runtime, but its vendored
+# dependencies (e.g. urllib3) are flagged by Trivy, so remove it
+RUN rm -rf \
+        "$UV_PYTHON_INSTALL_DIR"/cpython-*/lib/python3.11/site-packages/pip \
+        "$UV_PYTHON_INSTALL_DIR"/cpython-*/lib/python3.11/site-packages/pip-*.dist-info \
+        "$UV_PYTHON_INSTALL_DIR"/cpython-*/bin/pip*
+
 
 FROM builder AS builder_download_nltk
 

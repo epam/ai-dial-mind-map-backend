@@ -37,3 +37,6 @@ CVE-2026-9856 exp:2026-11-01
 # unstructured: fixed in 0.24.0, which requires Python >=3.11 while this
 # project supports >=3.10
 CVE-2026-71428 exp:2026-11-01
+# sentence-transformers: fixed in 5.6.0, which requires transformers >=5.0.0;
+# blocked by the same transformers constraints as CVE-2026-9856 above
+CVE-2026-68770 exp:2026-11-01

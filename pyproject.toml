@@ -15,7 +15,7 @@ langchain-community = "^0.3.1"
 beautifulsoup4 = "^4.12.3"
 markdownify = "^0.13.1"
 langchain-openai = "^0.3.0"
-sentence-transformers = {version = "3.3.1", extras = ["openvino"]}
+sentence-transformers = {version = "^5.6.0", extras = ["openvino"]}
 faiss-cpu = "^1.9.0"
 aidial-sdk = "^0.20.0"
 aidial-client = "^0.0.1"

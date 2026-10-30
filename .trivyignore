@@ -34,6 +34,6 @@ CVE-2026-63374 exp:2026-11-01
 # transformers: fixed in 5.10.0, but optimum[openvino] (optimum-intel 1.25)
 # requires transformers <4.54.0
 CVE-2026-9856 exp:2026-11-01
-# unstructured: fixed in 0.24.0, which requires Python >=3.11 while this
-# project supports >=3.10, and wrapt >=2 while aidial-sdk <0.40 requires <2
+# unstructured: fixed in 0.24.0, which requires wrapt >=2 while
+# aidial-sdk <0.40 requires <2
 CVE-2026-71428 exp:2026-11-01

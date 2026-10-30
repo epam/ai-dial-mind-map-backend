@@ -7,7 +7,7 @@ homepage = "https://dialx.ai/"
 keywords = ["ai", "mind-map"]
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.12"
+python = ">=3.11,<3.12"
 fastapi = "^0.134.0"
 uvicorn = "^0.31.0"
 aiohttp = "^3.14.4"
@@ -45,7 +45,7 @@ unstructured = {version = "0.18.18", extras = ["doc", "docx", "pdf", "ppt", "ppt
 cachetools = "5.3.1"
 rank-bm25 = "^0.2.2"
 optimum = {extras = ["openvino"], version = "^1.27.0"}
-nltk = "3.10.3"
+nltk = "3.10.4"
 openvino = "2025.2.0"
 pdfplumber = "0.11.9"
 theine = "^0.4.4"
@@ -54,6 +54,7 @@ humanfriendly = "^10.0"
 dataclasses-json = "^0.6.7"
 urllib3 = "^2.8.0"
 fsspec = ">=2026.6.0"
+filelock = ">=4.2.1"
 pydantic = "^2.0"
 requests = "^2.0"
 tqdm = "^4.0"

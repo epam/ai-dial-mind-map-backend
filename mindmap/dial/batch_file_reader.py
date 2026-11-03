@@ -2,9 +2,9 @@ import asyncio
 import os
 
 import aiohttp
-from theine import Cache
 
 from mindmap.dial.client import DialClient
+from mindmap.utils.file_cache import FileCache
 from mindmap.utils.logger_config import logger
 
 BATCH_READ_REQUESTS_LIMIT = int(os.getenv("BATCH_READ_REQUESTS_LIMIT", 300))
@@ -13,11 +13,11 @@ BATCH_READ_REQUESTS_LIMIT = int(os.getenv("BATCH_READ_REQUESTS_LIMIT", 300))
 class BatchFileReader:
     files: list[str]
     client: DialClient
-    cache: Cache | None
+    cache: FileCache | None
     cache_hits = 0
     _cache_hits_lock = asyncio.Lock()
 
-    def __init__(self, client: DialClient, cache: Cache | None = None):
+    def __init__(self, client: DialClient, cache: FileCache | None = None):
         self.files = []
         self.client = client
         self.cache = cache

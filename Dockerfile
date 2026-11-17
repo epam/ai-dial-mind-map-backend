@@ -12,6 +12,8 @@ ENV BGE_EMBEDDINGS_MODEL_PATH=/embeddings_model/bge-small-en
 ENV E5_EMBEDDINGS_MODEL_PATH=/embeddings_model/e5-small-v2
 
 RUN apt-get update && \
+    # Upgrade packages preinstalled in the base image (e.g. apt) to get security fixes
+    apt-get upgrade -y && \
     apt-get install --no-install-recommends -y \
         ca-certificates \
         # Libreoffice is required for MS office documents

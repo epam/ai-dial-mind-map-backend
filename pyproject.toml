@@ -20,12 +20,12 @@ faiss-cpu = "^1.9.0"
 aidial-sdk = "^0.20.0"
 aidial-client = "^0.0.1"
 torch = [
-    { markers = "sys_platform == 'darwin'", version = "2.10.0", source = "PyPI" },
-    { markers = "sys_platform != 'darwin'", version = "2.10.0+cpu", source = "pytorch" },
+    { markers = "sys_platform == 'darwin'", version = "2.7.0", source = "PyPI" },
+    { markers = "sys_platform != 'darwin'", version = "2.7.0+cpu", source = "pytorch" },
 ]
 torchvision = [
-    { markers = "sys_platform == 'darwin'", version = "0.25.0", source = "PyPI" },
-    { markers = "sys_platform != 'darwin'", version = "0.25.0+cpu", source = "pytorch" },
+    { markers = "sys_platform == 'darwin'", version = "0.22.0", source = "PyPI" },
+    { markers = "sys_platform != 'darwin'", version = "0.22.0+cpu", source = "pytorch" },
 ]
 pyjwt = "^2.14.0"
 langchain = "^0.3.13"

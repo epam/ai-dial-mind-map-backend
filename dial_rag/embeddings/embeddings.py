@@ -61,7 +61,10 @@ def bge_embedding_impl() -> HuggingFaceBgeEmbeddings:
         },
         show_progress=True,
     )
-    bge_embedding_impl.client.compile()
+    # Do not call `client.compile()` here: since sentence-transformers 5.x
+    # `encode()` goes through the torch.compile'd `__call__`, which requires
+    # a C++ compiler at runtime (absent in the docker image). With the
+    # openvino backend on CPU it brings no benefit anyway.
     return bge_embedding_impl
 
 

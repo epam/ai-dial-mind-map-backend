@@ -9,7 +9,6 @@ from langchain.schema import Document
 from langchain_community.vectorstores import FAISS
 from openai import RateLimitError
 from pydantic.types import SecretStr
-from theine import Cache
 
 from dial_rag.app import QA_CHAIN_CONFIG
 from dial_rag.dial_config import DialConfig
@@ -27,9 +26,13 @@ from mindmap.utils import graph_patch
 from mindmap.utils.dial_api import build_references, run_chain
 from mindmap.utils.docstore import decode_docstore
 from mindmap.utils.errors import prettify_rate_limit
+from mindmap.utils.file_cache import FileCache
 from mindmap.utils.graph import get_subgraph
 
-file_cache = Cache("lru", 2000)
+# Bounded by memory, not by the number of entries: a single index file of a
+# pdf mindmap can be tens of megabytes, so 2000 entries were unbounded in
+# practice and the memory was never released.
+file_cache = FileCache()
 
 
 def doc_to_attach(document: Document, index=None) -> dict:
